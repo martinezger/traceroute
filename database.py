@@ -14,10 +14,11 @@ class Database:
         conn = self.get_connection()
         cursor = conn.cursor()
         cursor.execute("DROP TABLE IF EXISTS TRACE")
-        sql = '''CREATE TABLE TRACE (ID CHAR(36), HOP INT, IP VARCHAR(256), PRIMARY KEY (ID, HOP))'''
+        sql = '''CREATE TABLE TRACE (ID VARCHAR(256), HOP INT, IP VARCHAR(256), PRIMARY KEY (ID, HOP))'''
         cursor.execute(sql)
         conn.commit()
         conn.close()
 
 
-
+if "__main__" == __name__:
+    Database().create_tables()
