@@ -1,6 +1,7 @@
 
 ## Before Start
 Install miniconda [link](https://docs.conda.io/en/latest/miniconda.html)
+
 Download the geolite2 database [link](https://www.maxmind.com/en/geolite2/signup)
 
 ## Setup Environment
