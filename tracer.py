@@ -8,20 +8,24 @@ from scapy.all import traceroute
 from urllib.request import urlopen
 from database import Database
 from model import Hop, Trace
-
-API_KEY = os.getenv('API_KEY', 'sample')
+from dotenv import load_dotenv
 
 
 def geolocate_ip(ip: str) -> dict:
-    url = f"https://api.ipgeolocation.io/ipgeo?apiKey={API_KEY}&ip={ip}"
+    url = f"https://api.ipgeolocation.io/ipgeo?apiKey={os.getenv('API_KEY')}&ip={ip}"
     try:
         with (urlopen(url)) as response:
             response_content = response.read()
     except URLError as e:
         print(e)
-        return {'country_name': 'unknown', 'city': 'unknown', 'latitude': 'unknown', 'longitude': 'unknown'}
+        return {
+            "country_name": "unknown",
+            "city": "unknown",
+            "latitude": "unknown",
+            "longitude": "unknown",
+        }
 
-    return json.loads(response_content.decode('utf-8'))
+    return json.loads(response_content.decode("utf-8"))
 
 
 def main():
@@ -32,17 +36,24 @@ def main():
     hops = []
     for i, hop in enumerate(result):
         geo_ip = geolocate_ip(hop[1].src)
-        trace.add(Hop(hop=i + 1, ip=hop[1].src, **geo_ip))
+        trace.add(
+            Hop(
+                hop=i + 1,
+                ip=hop[1].src,
+                country_name=geo_ip.get("country_name"),
+                city=geo_ip.get("city"),
+                latitude=geo_ip.get("latitude"),
+                longitude=geo_ip.get("longitude"),
+            )
+        )
 
     trace.commit()
-    inf = open(trace.id, 'wb')
+    inf = open(trace.id, "wb")
     pickle.dump(result, inf)
     inf.close()
     print(f"the trace is store as {trace.id}")
 
 
 if __name__ == "__main__":
+    load_dotenv()
     main()
-
-
-

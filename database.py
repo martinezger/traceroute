@@ -2,8 +2,7 @@ import sqlite3
 
 
 class Database:
-
-    def __init__(self, db_file_path='traces.sqlite'):
+    def __init__(self, db_file_path="traces.sqlite"):
         self.db_file_path = db_file_path
 
     def get_connection(self):
@@ -13,8 +12,8 @@ class Database:
         conn = self.get_connection()
         cursor = conn.cursor()
         cursor.execute("DROP TABLE IF EXISTS TRACE")
-        sql = '''CREATE TABLE TRACE (ID VARCHAR(256), HOP INT, IP VARCHAR(256), 
-        COUNTRY VARCHAR(256), CITY VARCHAR(256), LATITUDE FLOAT, LONGITUDE FLOAT, PRIMARY KEY (ID, HOP))'''
+        sql = """CREATE TABLE TRACE (ID VARCHAR(256), HOP INT, IP VARCHAR(256), 
+        COUNTRY VARCHAR(256), CITY VARCHAR(256), LATITUDE FLOAT, LONGITUDE FLOAT, PRIMARY KEY (ID, HOP))"""
         cursor.execute(sql)
         conn.commit()
         conn.close()

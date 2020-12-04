@@ -13,12 +13,13 @@ class Hop:
     longitude: float
 
     def __str__(self):
-        return f"HOP:{self.hop}, IP:{self.ip},  COUNTRY:{self.country_name}, CITY:{self.city}, " \
-               f"LATITUDE:{self.latitude}, LONGITUDE:{self.longitude}"
+        return (
+            f"HOP:{self.hop}, IP:{self.ip},  COUNTRY:{self.country_name}, CITY:{self.city}, "
+            f"LATITUDE:{self.latitude}, LONGITUDE:{self.longitude}"
+        )
 
 
 class Trace:
-
     def __init__(self, conn):
         self.conn = conn
         self.id = uuid4().__str__()
@@ -26,7 +27,15 @@ class Trace:
 
     def add(self, hop: Hop) -> None:
         self.hops.append(
-         (self.id, hop.hop, hop.ip, hop.country_name,  hop.city, hop.latitude, hop.longitude)
+            (
+                self.id,
+                hop.hop,
+                hop.ip,
+                hop.country_name,
+                hop.city,
+                hop.latitude,
+                hop.longitude,
+            )
         )
 
         return f"New hop {hop}"
