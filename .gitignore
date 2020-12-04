@@ -195,3 +195,4 @@ yarn-error.log
 **-lock.json
 
 *.db
+*.sqlite
