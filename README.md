@@ -1,3 +1,6 @@
+## Intro
+This project use [scapy](https://scapy.net/) to do the traceroute and [ipgeolocation.ip](https://ipgeolocation.io/) to geolocate the ips.
+The command will store the traceroutes in a file and in a sqlite database. 
 
 ## Before Start
 Install miniconda [link](https://docs.conda.io/en/latest/miniconda.html)
