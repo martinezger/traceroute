@@ -4,6 +4,8 @@ Install miniconda [link](https://docs.conda.io/en/latest/miniconda.html)
 
 Download the geolite2 database [link](https://www.maxmind.com/en/geolite2/signup)
 
+Create an account in [ipgeolocation.ip](https://ipgeolocation.io/), copy the apiKey and replace it in the file .env
+ 
 ## Setup Environment
 ```bash
 $ conda create -n traces python=3.6
@@ -39,5 +41,4 @@ sencod is the file created by tracer.py
 
 ```bash
 $ python trace_map.py /path/to/geolite2.mmdb 42bc99cb-8387-4918-ab49-5ab574a2b7ab
-
 ```
