@@ -44,7 +44,7 @@ sencod is the file created by tracer.py
 $ python trace_map.py /path/to/geolite2.mmdb 42bc99cb-8387-4918-ab49-5ab574a2b7ab
 ```
 
-##Database table
+## Database table
 
 The tracer will create a table named TRACE the table looks like this
 
