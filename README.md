@@ -32,6 +32,7 @@ The following command will create a file like this
 ```bash
 $ sudo python tracer.py www.example.com
 ```
+The traceroute hops will be store in the traces.sqlite database the id of the trace is the same as the file above.
 
 ## Show Trace Map
 create map takes two params 
