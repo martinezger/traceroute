@@ -34,6 +34,7 @@ class TestGeolocateIp:
             "isp": "unknown",
             "latitude": "unknown",
             "longitude": "unknown",
+            "date_created": "unknown"
         }
         urlopen_patch.assert_called_once_with(expected_url)
         assert result == expected_response

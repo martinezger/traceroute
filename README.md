@@ -43,3 +43,12 @@ sencod is the file created by tracer.py
 ```bash
 $ python trace_map.py /path/to/geolite2.mmdb 42bc99cb-8387-4918-ab49-5ab574a2b7ab
 ```
+
+##Database table
+
+The tracer will create a table named TRACE the table looks like this
+
+|ID|HOP|IP|COUNTRY|CITY|ISP| LATITUDE| LONGITUDE|DATE_CREATED|
+|---|---|---|---|---|---|---|---|---|
+|d3aa1809-b729-4eab-8392-ffcf3a400510|	1	|19.19.19.19	|Argentina	|Barranqueras	|an_isp	|12.12	|11.11	|2020-12-04 19:26:15.220-030|
+

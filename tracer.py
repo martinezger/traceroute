@@ -24,6 +24,7 @@ def geolocate_ip(ip: str) -> dict:
             "isp": "unknown",
             "latitude": "unknown",
             "longitude": "unknown",
+            "date_created": "unknown"
         }
 
     return json.loads(response_content.decode("utf-8"))
