@@ -12,11 +12,13 @@ class Database:
         conn = self.get_connection()
         cursor = conn.cursor()
         cursor.execute("DROP TABLE IF EXISTS TRACE")
-        sql = """CREATE TABLE TRACE (ID VARCHAR(256), HOP INT, IP VARCHAR(256), 
-        COUNTRY VARCHAR(256), CITY VARCHAR(256), LATITUDE FLOAT, LONGITUDE FLOAT, PRIMARY KEY (ID, HOP))"""
+        sql = """CREATE TABLE TRACE (ID VARCHAR(256), HOP INT, IP VARCHAR(256),
+        COUNTRY VARCHAR(256), CITY VARCHAR(256), ISP VARCHAR(256),
+        LATITUDE FLOAT, LONGITUDE FLOAT,DATE_CREATED DATETIME, PRIMARY KEY (ID, HOP))"""
         cursor.execute(sql)
         conn.commit()
         conn.close()
+        print("table TRACE created!!")
 
 
 if "__main__" == __name__:

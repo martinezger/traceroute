@@ -21,6 +21,7 @@ def geolocate_ip(ip: str) -> dict:
         return {
             "country_name": "unknown",
             "city": "unknown",
+            "isp": "unknown",
             "latitude": "unknown",
             "longitude": "unknown",
         }
@@ -42,9 +43,12 @@ def main():
                 ip=hop[1].src,
                 country_name=geo_ip.get("country_name"),
                 city=geo_ip.get("city"),
+                isp=geo_ip.get("isp"),
                 latitude=geo_ip.get("latitude"),
                 longitude=geo_ip.get("longitude"),
+                date_created=geo_ip.get("current_time")
             )
+
         )
 
     trace.commit()

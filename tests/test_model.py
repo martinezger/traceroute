@@ -1,3 +1,4 @@
+from datetime import datetime
 from unittest.mock import MagicMock
 
 import pytest
@@ -8,18 +9,18 @@ from model import Hop, Trace
 
 class TestHop:
     def test_hop__instantiation(self):
-        hop = Hop(1, "19.19.19.19", "Argentina", "Barranqueras", 12.12, 11.11)
+        hop = Hop(1, "19.19.19.19", "Argentina", "Barranqueras", "an isp", 12.12, 11.11, "2020-12-04 19:26:15.220-030")
 
         assert (
             str(hop)
             == f"HOP:{hop.hop}, IP:{hop.ip},  COUNTRY:{hop.country_name}, CITY:{hop.city}, "
-            f"LATITUDE:{hop.latitude}, LONGITUDE:{hop.longitude}"
+            f"ISP:{hop.isp}, LATITUDE:{hop.latitude}, LONGITUDE:{hop.longitude}, DATE_CREATED:{hop.date_created}"
         )
 
 
 class TestTrace:
     def test_trace__add__hop(self):
-        hop = Hop(1, "19.19.19.19", "Argentina", "Barranqueras", 12.12, 11.11)
+        hop = Hop(1, "19.19.19.19", "Argentina", "Barranqueras", "an isp", 12.12, 11.11, "2020-12-04 19:26:15.220-030")
         trace = Trace(Database("test.sqlite").get_connection())
         result = trace.add(hop)
 
@@ -31,7 +32,7 @@ class TestTrace:
     def test_trace__commit_success(self):
         db = Database("test.sqlite")
         db.create_tables()
-        hop = Hop(1, "19.19.19.19", "Argentina", "Barranqueras", 12.12, 11.11)
+        hop = Hop(1, "19.19.19.19", "Argentina", "Barranqueras", "an isp", 12.12, 11.11, "2020-12-04 19:26:15.220-030")
         trace = Trace(db.get_connection())
         trace.add(hop)
         result = trace.commit()
@@ -45,7 +46,7 @@ class TestTrace:
         conn = MagicMock()
         conn.commit.side_effect = Exception()
 
-        hop = Hop(1, "19.19.19.19", "Argentina", "Barranqueras", 12.12, 11.11)
+        hop = Hop(1, "19.19.19.19", "Argentina", "Barranqueras", 12.12, 11.11, "2020-12-04 19:26:15.220-030")
         trace = Trace(conn)
         trace.add(hop)
 

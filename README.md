@@ -38,6 +38,6 @@ first is the geomaplite.mmdb pathfile
 sencod is the file created by tracer.py
 
 ```bash
-$ python create_map.py /path/to/geolite2.mmdb 42bc99cb-8387-4918-ab49-5ab574a2b7ab
+$ python trace_map.py /path/to/geolite2.mmdb 42bc99cb-8387-4918-ab49-5ab574a2b7ab
 
 ```

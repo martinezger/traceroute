@@ -1,4 +1,5 @@
-from unittest.mock import patch, MagicMock
+import os
+from unittest.mock import patch
 from urllib.error import URLError
 
 from six import BytesIO
@@ -7,8 +8,11 @@ from tracer import geolocate_ip
 
 
 class TestGeolocateIp:
-    def test_geolocate_ip__success(self):
 
+    def setup(self):
+        os.environ['API_KEY'] = 'sample'
+
+    def test_geolocate_ip__success(self):
         with patch("tracer.urlopen") as urlopen_patch:
             urlopen_patch.return_value = BytesIO(b'\n{"sample":"sample"}\n')
             result = geolocate_ip("192.168.1.1")
@@ -27,6 +31,7 @@ class TestGeolocateIp:
         expected_response = {
             "country_name": "unknown",
             "city": "unknown",
+            "isp": "unknown",
             "latitude": "unknown",
             "longitude": "unknown",
         }
