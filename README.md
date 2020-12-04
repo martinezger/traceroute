@@ -14,7 +14,7 @@ Create an account in [ipgeolocation.ip](https://ipgeolocation.io/), copy the api
 $ conda create -n traces python=3.6
 $ conda activate traces
 $ conda install scapy cartopy
-$ pip install geoip2 dataclasses
+$ pip install geoip2 dataclasses python-dotenv
 ```
 ## Activate virtual env
 ```bash
