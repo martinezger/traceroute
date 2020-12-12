@@ -24,16 +24,16 @@ def geolocate_ip(ip: str) -> dict:
             "isp": "unknown",
             "latitude": "unknown",
             "longitude": "unknown",
-            "date_created": "unknown"
+            "time_zone": {"current_time": ""},
         }
 
     return json.loads(response_content.decode("utf-8"))
 
 
-def main():
+def main(host):
     db = Database()
     conn = db.get_connection()
-    result, error = traceroute(sys.argv[1])
+    result, error = traceroute(host)
     trace = Trace(conn)
     hops = []
     for i, hop in enumerate(result):
@@ -47,9 +47,8 @@ def main():
                 isp=geo_ip.get("isp"),
                 latitude=geo_ip.get("latitude"),
                 longitude=geo_ip.get("longitude"),
-                date_created=geo_ip.get("current_time")
+                date_created=geo_ip.get("time_zone").get("current_time"),
             )
-
         )
 
     trace.commit()
@@ -61,4 +60,4 @@ def main():
 
 if __name__ == "__main__":
     load_dotenv()
-    main()
+    main(host=sys.argv[1])
