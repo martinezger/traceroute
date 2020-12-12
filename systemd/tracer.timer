@@ -1,0 +1,8 @@
+[Unit]
+Description=Runs every 30 min tracer.py
+
+[Timer]
+OnCalendar=*:0/30
+
+[Install]
+WantedBy=timers.target
