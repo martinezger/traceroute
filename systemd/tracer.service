@@ -1,0 +1,7 @@
+[Unit]
+Description=A traceroute tool
+
+[Service]
+Type=oneshot
+WorkingDirectory=~/traceroute
+ExecStart=~/miniconda3/envs/traces/bin/python tracer.py www.example.com
