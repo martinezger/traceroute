@@ -196,3 +196,5 @@ yarn-error.log
 
 *.db
 *.sqlite
+traces/
+tests/traces/

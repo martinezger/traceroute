@@ -3,12 +3,24 @@ import sys
 import pickle
 import json
 from urllib.error import URLError
-
-from scapy.all import traceroute
 from urllib.request import urlopen
+from scapy.layers.inet import TracerouteResult, traceroute
+
 from database import Database
 from model import Hop, Trace
 from dotenv import load_dotenv
+
+
+def save_to_file(result: TracerouteResult, trace: Trace):
+
+    if not os.path.exists('traces'):
+        os.makedirs('traces')
+
+    inf = open(f"traces/{trace.id}", "wb")
+    pickle.dump(result, inf)
+    inf.close()
+    print(f"the trace is store as {trace.id}")
+
 
 
 def geolocate_ip(ip: str) -> dict:
@@ -52,11 +64,7 @@ def main(host):
         )
 
     trace.commit()
-    inf = open(trace.id, "wb")
-    pickle.dump(result, inf)
-    inf.close()
-    print(f"the trace is store as {trace.id}")
-
+    save_to_file(result, trace)
 
 if __name__ == "__main__":
     load_dotenv()

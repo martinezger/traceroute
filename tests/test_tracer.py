@@ -12,9 +12,8 @@ from tracer import geolocate_ip
 
 
 class TestGeolocateIp:
-
     def setup(self):
-        os.environ['API_KEY'] = 'sample'
+        os.environ["API_KEY"] = "sample"
 
     def test_geolocate_ip__success(self):
         with patch("tracer.urlopen") as urlopen_patch:
@@ -38,7 +37,7 @@ class TestGeolocateIp:
             "isp": "unknown",
             "latitude": "unknown",
             "longitude": "unknown",
-            "time_zone": {"current_time": ""}
+            "time_zone": {"current_time": ""},
         }
         urlopen_patch.assert_called_once_with(expected_url)
         assert result == expected_response
@@ -46,15 +45,17 @@ class TestGeolocateIp:
 
 class TestMain:
     def setup_method(self, method):
-        self.db = Database('test.sqlite')
+        self.db = Database("test.sqlite")
         self.db.create_tables()
 
-    @patch('tracer.Database')
-    @patch('tracer.traceroute')
-    @patch('tracer.geolocate_ip')
-    @patch('tracer.pickle')
-    @patch('tracer.open')
-    def test_main__success(self,mock_open, mock_pickle, mock_geolocate_ip, mock_traceroute, mock_database):
+    @patch("tracer.Database")
+    @patch("tracer.traceroute")
+    @patch("tracer.geolocate_ip")
+    @patch("tracer.pickle")
+    @patch("tracer.open")
+    def test_main__success(
+        self, mock_open, mock_pickle, mock_geolocate_ip, mock_traceroute, mock_database
+    ):
         mock_traceroute.return_value = ([MagicMock()], [MagicMock()])
         mock_database.return_value = self.db
         mock_geolocate_ip.return_value = {
@@ -66,12 +67,10 @@ class TestMain:
             "time_zone": {"current_time": ""},
         }
 
-        tracer.main('www.example.com')
+        tracer.main("www.example.com")
 
-        mock_traceroute.assert_called_once_with('www.example.com')
+        mock_traceroute.assert_called_once_with("www.example.com")
         mock_database.assert_called_once()
         mock_geolocate_ip.assert_called_once()
         mock_pickle.dump.assert_called_once()
         mock_open.assert_called_once()
-
-

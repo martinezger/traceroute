@@ -39,7 +39,7 @@ class Trace:
                 hop.isp,
                 hop.latitude,
                 hop.longitude,
-                hop.date_created
+                hop.date_created,
             )
         )
 
