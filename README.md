@@ -56,6 +56,23 @@ The tracer will create a table named TRACE the table looks like this
 |---|---|---|---|---|---|---|---|---|
 |d3aa1809-b729-4eab-8392-ffcf3a400510|	1	|19.19.19.19	|Argentina	|Barranqueras	|an_isp	|12.12	|11.11	|2020-12-04 19:26:15.220-030|
 
+
+## Sqlite
+
+```
+sqlite3 traces.sqlite
+```
+command to see traces
+```
+/> select * from traces;
+```
+Exit sqlite
+```
+/> .q
+
+```
+
+
 ## Setup the services and timers
 
 Set the file systemd/tracer.service with the ip/host you want to traceroute.
