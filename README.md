@@ -56,3 +56,17 @@ The tracer will create a table named TRACE the table looks like this
 |---|---|---|---|---|---|---|---|---|
 |d3aa1809-b729-4eab-8392-ffcf3a400510|	1	|19.19.19.19	|Argentina	|Barranqueras	|an_isp	|12.12	|11.11	|2020-12-04 19:26:15.220-030|
 
+## Setup the services and timers
+
+Set the file systemd/tracer.service with the ip/host you want to traceroute.
+
+```
+sudo cp systemd/tracer.service /etc/systemd/system/tracer.service
+sudo cp systemd/tracer.timer /etc/systemd/system/tracer.timer
+```
+Enable the timer
+```
+sudo systemctl start tracer.timer
+sudo systemctl enable --now tracer.timer
+```
+
