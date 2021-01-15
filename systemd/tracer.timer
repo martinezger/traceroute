@@ -1,8 +1,8 @@
 [Unit]
-Description=Runs every 30 min tracer.py
+Description=Runs every 60 min tracer.py
 
 [Timer]
-OnCalendar=*:0/30
+OnCalendar=00/1:00
 
 [Install]
 WantedBy=timers.target
