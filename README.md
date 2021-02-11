@@ -87,3 +87,23 @@ sudo systemctl start tracer.timer
 sudo systemctl enable --now tracer.timer
 ```
 
+## Dash app traces plot
+
+First you need to install dash
+
+```
+$ pip install dash==1.19.0
+```
+Setup an environment variable CSV_DATA with the path to you csv data.
+
+```
+$ export CSV_DATA=/PATH/TO/CSV/DATA
+```
+
+Then run the server
+
+```
+$ python -s dash_app.py
+```
+It will automatically open a new browser tab with the traces.
+
