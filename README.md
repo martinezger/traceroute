@@ -95,6 +95,7 @@ First you need to install dash
 $ pip install dash==1.19.0
 ```
 Setup an environment variable CSV_DATA with the path to you csv data.
+There is a sample.csv file to test.
 
 ```
 $ export CSV_DATA=/PATH/TO/CSV/DATA
