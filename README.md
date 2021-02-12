@@ -62,7 +62,6 @@ sudo systemctl enable --now tracer.timer
 ```
 ## Dash app for plot the traceroutes
 First you need setup an environment variable CSV_DATA with the path to you csv data.
->>>>>>> a24ce02... update README
 ```
 $ export CSV_DATA=/PATH/TO/CSV/DATA
 ```
