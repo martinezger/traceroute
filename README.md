@@ -108,3 +108,16 @@ $ python -s dash_app.py
 ```
 It will automatically open a new browser tab with the traces.
 
+## SQL query for get traces
+
+```sql
+select CITY, ID, HOP, LONGITUDE, LATITUDE, IP, DATE_CREATED FROM TRACE WHERE LONGITUDE !='unknown' and LATITUDE != 'unknown' and id = "013ac729-e096-4bd5-8578-965dc7d27bd2" ORDER BY ID, HOP ASC limit 185;
+```
+
+## Get csv from sqlite3
+
+```bash
+
+```
+
+
