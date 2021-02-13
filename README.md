@@ -99,6 +99,6 @@ Once you are in the sqlite command line type
 /> .output sample.csv
 /> select CITY, ID, HOP, LONGITUDE, LATITUDE, IP, DATE_CREATED FROM TRACE WHERE LONGITUDE !='unknown' and LATITUDE != 'unknown' and id = "013ac729-e096-4bd5-8578-965dc7d27bd2" ORDER BY ID, HOP ASC limit 185;
 ```
-Nothing is going to be promt afte  hit enter this is because your result went to the sample.csv.
+No result are going to be display afte hit enter this is because your result went to the sample.csv.
 
 
